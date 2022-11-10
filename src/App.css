@@ -3,6 +3,8 @@
   margin:0;
   padding:0;
   font-family: 'Poppins', sans-serif;
+  --primary-color:#06b6d4 ;
+  --light-grey: #ddd;
 }
 
 .login-page-container{
@@ -12,10 +14,20 @@
   margin:2rem;
   padding:2rem;
 }
-
-.login-page-container h1{
+.login-header{
+  display: flex;
+  justify-content:center;
   margin: 0 0 2rem 0;
+}
+.login-header h1{
+  
   align-self: center;
+}
+.login-header img{
+  width:50px;
+  height:50px;
+  align-self: auto;
+  margin-left:10px;
 }
 
 .input-box{
@@ -26,11 +38,15 @@
   align-self: center;
 }
 .create-note-btn{
-  padding:5px;
+  padding:10px;
   max-width:fit-content;
   align-self: center;
   font-size:12px;
-  margin:10px;
+  margin:15px;
+  background-color:var(--primary-color);
+  border-width:0;
+  border-radius:5px;
+  cursor:pointer;
 }
 .warning-box{
   font-size: 12px;
@@ -38,7 +54,101 @@
   padding:5px;
   align-self: center;
 }
+/* editor container */
+.editor-container{
+  display:flex;
+  flex:horizontal;
+}
 
+/* hero-section */
+.hero-section{
+  background-image: linear-gradient(to right, var(--primary-color), #1f2f98);
+  height:100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight:400;
+  box-shadow: 8px 0 8px grey;
+  display: flex;
+  justify-content:left;
+}
+.hero-heading{
+  align-self:flex-end;
+  padding:10px;
+}
+
+/* sidebar */
+
+.sidebar-container{
+  width:30%;
+  border-right: 1px solid var(--light-grey);
+  height:100vh;
+}
+.sidebar-first-container{
+  display:flex;
+  flex-direction: horizontal;
+  justify-content:space-between;
+  padding: 10px 0 30px 0;
+  
+
+}
+.sidebar-header{
+  padding:0 10px 0 10px;
+}
+.add-btn{
+  padding:2px 4px 2px 4px;
+  margin:0 10px 0 10px;
+  font-size:6px;
+  background-color: var(--primary-color);
+  border-width:0;
+  border-radius:2px;
+  max-height:20px;
+
+}
+.sidebar-second-container{
+  overflow-y: scroll;
+}
+.note{
+  display: flex;
+  flex-direction:column;
+  padding: 5px 0 5px 0;
+  border-top: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
+}
+.note:hover{
+  background-color: #ddd;
+  cursor: pointer;
+
+}
+.note-title-container{
+  display:flex;
+  flex-direction: horizontal;
+  justify-content:space-between;
+  align-items: center;
+
+}
+.note-title{
+  padding:0 10px 0 10px;
+  font-size: 12px;
+}
+.delete-btn{
+  padding:4px 4px 4px 4px;
+  margin:0 10px 0 10px;
+  font-size:6px;
+  border-radius:2px;
+  border-width:0;
+}
+.note-preview{
+  padding:0 10px 0 10px;
+  font-size:10px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.note-date{
+  padding:0 10px 0 10px;
+  font-size: 8px;
+  color: grey;
+}
 
 
 
