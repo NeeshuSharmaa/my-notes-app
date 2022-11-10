@@ -1,11 +1,11 @@
 import React from "react";
 import './App.css';
-import LoginPage from "./components/LoginPage"
+import Editor from "./components/Editor"
 
 export default function App() {
   return (
     <div className="App">
-      <LoginPage />
+      <Editor />
       
     </div>
   );
