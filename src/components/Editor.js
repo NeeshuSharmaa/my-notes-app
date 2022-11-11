@@ -1,17 +1,16 @@
 import React from "react";
 
-export default function Main(props) {
+export default function Editor(props) {
   return (
-    <div className="main-outer-container">
+    <div className="editor-outer-container">
       <input
         type="text"
-        className="main-search-box"
+        className="editor-search-box"
         placeholder="TITLE"
-        onChange={props.titleHandler}
       ></input>
       <textarea
         rows={20}
-        className="main-note-textarea"
+        className="editor-note-textarea"
         placeholder="Write your note here..."
       ></textarea>
     </div>

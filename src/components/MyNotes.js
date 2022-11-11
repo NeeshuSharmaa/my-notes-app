@@ -1,9 +1,6 @@
 import React from "react";
 import uuid from "react-uuid";
 import LoginPage from "./LoginPage";
-import Sidebar from "./Sidebar";
-import Main from "./Main";
-import HeroSection from "./HeroSection";
 import Dashboard from "./Dashboard";
 
 export default function MyNotes() {
@@ -11,6 +8,10 @@ export default function MyNotes() {
   var [userName, setUserName] = React.useState("");
   var [warning, setWarning] = React.useState("");
   var [logged, setLogged] = React.useState(false);
+  var [showEditor, setShowEditor] = React.useState(false);
+  var [notes, setNotes] = React.useState([]);
+  var [activeNote, setActiveNote] = React.useState(false);
+  var [hoveredStyle, setHoveredStyle] = React.useState(false);
 
   function inputChangeHandler(event) {
     setUserName(event.target.value);
@@ -24,27 +25,21 @@ export default function MyNotes() {
       : setLogged(true);
   }
 
-  // main page
-  var [title, setTitle] = React.useState("Unititled Title");
-  var [notes, setNotes] = React.useState([
-    {
-      id: 1,
-      title: title,
-      description: "",
-      lastModified: new Date().toLocaleString(),
-    },
-  ]);
   function onAddNote() {
     const newNote = {
       id: uuid(),
-      title: "",
-      description: "",
+      title: "Untitled Title",
+      body: "Hi! Start Writing here and make the most out of My Notes. (❁´◡`❁) ",
       lastModified: new Date().toLocaleString(),
     };
     setNotes([newNote, ...notes]);
   }
-  function titleHandler(event) {
-    setTitle(event.target.value);
+
+  function EditorHandler() {
+    setShowEditor(true);
+  }
+  function onDeleteNote(idToDelete) {
+    setNotes(notes.filter((note) => note.id !== idToDelete));
   }
 
   return (
@@ -55,8 +50,13 @@ export default function MyNotes() {
           logged={logged}
           notes={notes}
           onAddNote={onAddNote}
-          noteTitle={title}
-          titleHandler={titleHandler}
+          EditorHandler={EditorHandler}
+          showEditorState={showEditor}
+          onDeleteNote={onDeleteNote}
+          activeNote={activeNote}
+          setActiveNote={setActiveNote}
+          hoveredStyle={hoveredStyle}
+          setHoveredStyle={setHoveredStyle}
         />
       ) : (
         <LoginPage
@@ -80,7 +80,7 @@ export default function MyNotes() {
           <div className="editor-container">
             <Sidebar notes={notes} addNote={onAddNote} />
 
-            <Main />
+            <Editor />
           </div>
         </div>
       )} */}

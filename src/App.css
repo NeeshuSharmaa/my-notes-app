@@ -5,6 +5,7 @@
   font-family: 'Poppins', sans-serif;
   --primary-color:#06b6d4 ;
   --light-grey: #ddd;
+  --off-white:rgb(211, 211, 211);
   box-sizing: border-box;
   overflow-y:hidden;
 }
@@ -57,8 +58,8 @@ button:hover{
   padding:5px;
   align-self: center;
 }
-/* editor container */
-.editor-container{
+/* outer container */
+.editor-sidebar-container{
   display:flex;
   flex:horizontal;
 }
@@ -96,6 +97,7 @@ font-size:12px;
   flex-direction: horizontal;
   justify-content:space-between;
   padding: 10px 0 30px 0;
+  border-bottom: 1px solid var(--light-grey);
 }
 .sidebar-header{
   padding:0 10px 0 10px;
@@ -108,7 +110,6 @@ font-size:12px;
   border-width:0;
   border-radius:2px;
   max-height:20px;
-
 }
 .sidebar-second-container{
   overflow-y: scroll;
@@ -124,13 +125,18 @@ font-size:12px;
 .note:hover{
   background-color: #ddd;
   cursor: pointer;
-
+  color:black;
+}
+.active {
+  background: #08c;
+  color: white;
 }
 .note-title-container{
   display:flex;
   flex-direction: horizontal;
   justify-content:space-between;
   align-items: center;
+  margin-bottom:2px;
 
 }
 .note-title{
@@ -155,15 +161,21 @@ font-size:12px;
   font-size: 8px;
   color: grey;
 }
+.active-date{
+  color:var(--off-white);
+}
+.hovered-date{
+  color: grey;
+}
 
-/* main */
-.main-outer-container{
+/* editor */
+.editor-outer-container{
   display:flex;
   flex-direction:column;
   flex-wrap:wrap;
   width:70%;
 }
-.main-outer-container textarea {
+.editor-outer-container textarea {
   display: block;
   border: 1px solid #ddd;
   width: 100%;
@@ -171,11 +183,12 @@ font-size:12px;
   resize: none;
   font-size: 12px;
   font-family: inherit;
+  margin-top:10px;
 }
-.main-note-textarea:focus{
+.editor-note-textarea:focus{
   outline:none;
 }
-.main-search-box{
+.editor-search-box{
   padding:5px 10px 5px 10px;
 }
 
