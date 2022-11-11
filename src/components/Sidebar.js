@@ -15,11 +15,11 @@ export default function Sidebar(props) {
         <div className="sidebar-second-container">
           {props.notes.map((note) => (
             <Note
+              key={note.id}
               note={note}
-              showEditor={props.showEditor}
               onDeleteNote={props.onDeleteNote}
-              activeNote={props.activeNote}
-              setActiveNote={props.setActiveNote}
+              activeNoteId={props.activeNoteId}
+              setActiveNoteId={props.setActiveNoteId}
               hoveredStyle={props.hoveredStyle}
               setHoveredStyle={props.setHoveredStyle}
             />

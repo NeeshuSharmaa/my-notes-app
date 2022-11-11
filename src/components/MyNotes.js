@@ -8,9 +8,8 @@ export default function MyNotes() {
   var [userName, setUserName] = React.useState("");
   var [warning, setWarning] = React.useState("");
   var [logged, setLogged] = React.useState(false);
-  var [showEditor, setShowEditor] = React.useState(false);
   var [notes, setNotes] = React.useState([]);
-  var [activeNote, setActiveNote] = React.useState(false);
+  var [activeNoteId, setActiveNoteId] = React.useState(""); //takes id of activenote
   var [hoveredStyle, setHoveredStyle] = React.useState(false);
 
   function inputChangeHandler(event) {
@@ -35,28 +34,30 @@ export default function MyNotes() {
     setNotes([newNote, ...notes]);
   }
 
-  function EditorHandler() {
-    setShowEditor(true);
-  }
   function onDeleteNote(idToDelete) {
     setNotes(notes.filter((note) => note.id !== idToDelete));
   }
 
+  function updateNote(updatedNote) {
+    var otherNotes = notes.filter((note) => note.id !== updatedNote.id);
+
+    setNotes([updatedNote, ...otherNotes]);
+  }
+
   return (
     <>
-      {logged ? (
+      {!logged ? (
         <Dashboard
           userName={userName}
           logged={logged}
           notes={notes}
           onAddNote={onAddNote}
-          EditorHandler={EditorHandler}
-          showEditorState={showEditor}
           onDeleteNote={onDeleteNote}
-          activeNote={activeNote}
-          setActiveNote={setActiveNote}
+          activeNoteId={activeNoteId}
+          setActiveNoteId={setActiveNoteId}
           hoveredStyle={hoveredStyle}
           setHoveredStyle={setHoveredStyle}
+          updateNote={updateNote}
         />
       ) : (
         <LoginPage

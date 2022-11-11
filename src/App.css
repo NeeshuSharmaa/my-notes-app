@@ -113,7 +113,7 @@ font-size:12px;
 }
 .sidebar-second-container{
   overflow-y: scroll;
-  height: calc(100vh - 78px);
+  height: calc(100vh - 175px);
 }
 .note{
   display: flex;
@@ -169,6 +169,11 @@ font-size:12px;
 }
 
 /* editor */
+.no-active-note{
+  margin:100px 100px 100px 200px;
+  padding:50px;
+}
+
 .editor-outer-container{
   display:flex;
   flex-direction:column;

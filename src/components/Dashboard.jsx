@@ -12,14 +12,19 @@ function Dashboard(props) {
         <Sidebar
           notes={props.notes}
           addNote={props.onAddNote}
-          showEditor={props.EditorHandler}
           onDeleteNote={props.onDeleteNote}
-          activeNote={props.activeNote}
-          setActiveNote={props.setActiveNote}
+          activeNoteId={props.activeNoteId}
+          setActiveNoteId={props.setActiveNoteId}
           hoveredStyle={props.hoveredStyle}
           setHoveredStyle={props.setHoveredStyle}
         />
-        {props.showEditorState && <Editor />}
+        {props.activeNoteId && (
+          <Editor
+            notes={props.notes}
+            activeNoteId={props.activeNoteId}
+            updateNote={props.updateNote}
+          />
+        )}
       </div>
     </div>
   );

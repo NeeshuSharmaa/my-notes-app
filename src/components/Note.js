@@ -1,19 +1,16 @@
 import React from "react";
 
 export default function Note(props) {
-  const noteStyle = `note ${props.note.id === props.activeNote && "active"}`;
-  const activeDate = `${props.note.id === props.activeNote && "active-date"}`;
-  const hoveredDate = `${props.hoveredStyle && "hovered-date"}`;
-  const modifiedDateStyle = `note-date ${activeDate} ${hoveredDate}`;
+  const noteStyle = `note ${props.note.id === props.activeNoteId && "active"}`;
+
+  function activeNoteHandler() {
+    props.setActiveNoteId(props.note.id);
+  }
+
   return (
-    <div
-      className={noteStyle}
-      onClick={() => props.setActiveNote(props.note.id)}
-      onMouseOver={() => props.setHoveredStyle(true)}
-      onMouseOut={() => props.setHoveredStyle(false)}
-    >
+    <div className={noteStyle}>
       <div className="note-title-container">
-        <span className="note-title" onClick={props.showEditor}>
+        <span className="note-title" onClick={activeNoteHandler}>
           {props.note.title}
         </span>
         <button
@@ -23,10 +20,10 @@ export default function Note(props) {
           Delete
         </button>
       </div>
-      <p className="note-preview" onClick={props.showEditor}>
-        {props.note.body && props.note.body.substr(0, 100) + "......"}
+      <p className="note-preview" onClick={activeNoteHandler}>
+        {props.note.body && props.note.body.substr(0, 25) + "......"}
       </p>
-      <small className={modifiedDateStyle} onClick={props.showEditor}>
+      <small className="note-date" onClick={activeNoteHandler}>
         Modified date: {props.note.lastModified}
       </small>
     </div>
